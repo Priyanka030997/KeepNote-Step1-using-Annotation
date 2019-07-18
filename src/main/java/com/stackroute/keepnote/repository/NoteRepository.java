@@ -92,4 +92,7 @@ public class NoteRepository {
 
 		return exists;
 	}
+
+	public static class AppConfig {
+	}
 }

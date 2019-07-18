@@ -22,7 +22,7 @@ import com.stackroute.keepnote.controller.NoteController;
 import com.stackroute.keepnote.repository.NoteRepository;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration("/beans.xml")
+@ContextConfiguration(classes=com.stackroute.keepnote.repository.WebAppInitializer.class)
 public class NoteControllerTest {
 	
 	private MockMvc mockMvc;

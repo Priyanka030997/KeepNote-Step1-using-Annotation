@@ -3,6 +3,7 @@ package com.stackroute.keepnote.controller;
 
 import com.stackroute.keepnote.model.Note;
 import com.stackroute.keepnote.repository.NoteRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.stereotype.Controller;
@@ -34,10 +35,13 @@ public class NoteController {
 	 * Retrieve the Note object from the context.
 	 * Retrieve the NoteRepository object from the context.
 	 */
-	ApplicationContext context=new ClassPathXmlApplicationContext("beans.xml");
-	        Note noteObj=  context.getBean("note",Note.class);
-	        NoteRepository noteRepositoryObj=context.getBean("noteRepository",NoteRepository.class);
-	
+
+	@Autowired
+	NoteRepository noteRepositoryObj;
+
+	@Autowired
+	Note noteObj;
+
 	/*Define a handler method to read the existing notes by calling the getAllNotes() method 
 	 * of the NoteRepository class and add it to the ModelMap which is an implementation of Map 
 	 * for use when building model data for use with views. it should map to the default URL i.e. "/" */
@@ -62,7 +66,7 @@ public class NoteController {
 	*/
 	@RequestMapping(value="/saveNote",method= RequestMethod.POST)
 
-	public ModelAndView addNote(int noteId,String noteTitle,String noteContent,String noteStatus)
+	public ModelAndView addNote(int noteId,String noteTitle,String noteContent,String noteStatus,Note noteObj)
 	{
       noteObj.setNoteId(noteId);
       noteObj.setNoteTitle(noteTitle);
