@@ -8,5 +8,6 @@
 	<!--  Add a bean element with ID as "note" for Note model with scope prototype-->
 	
 	<!--  Add a bean element with ID as "noteRepository" for NoteRepository model -->
-
+<bean id="note" class="com.stackroute.keepnote.model.Note" scope="prototype"/>
+	<bean id="noteRepository" class="com.stackroute.keepnote.repository.NoteRepository"/>
 </beans>
